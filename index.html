@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LoomLayers | Premium Digital Services</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;800;900&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background-color: #000;
+            color: #fff;
+            overflow: hidden; 
+        }
+
+        .page-wrapper {
+            display: flex;
+            width: 400vw; 
+            height: 100vh;
+            transition: transform 0.8s cubic-bezier(0.86, 0, 0.07, 1);
+        }
+
+        .page {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+        }
+
+        #page1 {
+            background: radial-gradient(circle at center, #111 0%, #000 100%);
+        }
+        .hero-title {
+            font-size: 10vw;
+            font-weight: 900;
+            letter-spacing: -5px;
+            background: linear-gradient(to bottom, #fff, #555);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        #page2 { background: #080808; }
+        .service-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            max-width: 800px;
+            margin: 30px 0;
+        }
+        .service-item {
+            background: #111;
+            padding: 30px;
+            border: 1px solid #222;
+            border-radius: 15px;
+        }
+        .service-item h3 { color: #38bdf8; margin-bottom: 10px; }
+
+        #page3 { background: #000; }
+        .price-tag { color: #25D366; font-size: 1.5rem; margin-bottom: 10px; font-weight: bold; }
+        
+        /* New Email Styling */
+        .email-link {
+            color: #38bdf8;
+            text-decoration: none;
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            display: block;
+            font-weight: 400;
+            transition: opacity 0.3s;
+        }
+        .email-link:hover { opacity: 0.7; }
+
+        #page4 { background: #050505; }
+        .thanks-txt {
+            font-size: 4rem;
+            animation: pulse 2s infinite;
+        }
+
+        .btn {
+            padding: 18px 40px;
+            background: #fff;
+            color: #000;
+            border: none;
+            border-radius: 50px;
+            font-weight: 800;
+            cursor: pointer;
+            text-transform: uppercase;
+            font-size: 1rem;
+            transition: 0.3s;
+            text-decoration: none;
+        }
+        .btn:hover {
+            transform: scale(1.1);
+            background: #38bdf8;
+        }
+        .whatsapp-btn {
+            background: #25D366;
+            color: #fff;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); opacity: 0.8; }
+            50% { transform: scale(1.05); opacity: 1; }
+            100% { transform: scale(1); opacity: 0.8; }
+        }
+
+        @media (max-width: 768px) {
+            .hero-title { font-size: 18vw; }
+            .service-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="page-wrapper" id="mainWrapper">
+        
+        <section class="page" id="page1">
+            <h1 class="hero-title">LOOMLAYERS</h1>
+            <p style="letter-spacing: 5px; color: #888; margin-bottom: 40px;">THE DIGITAL REVOLUTION</p>
+            <button class="btn" onclick="goToPage(1)">View Services</button>
+        </section>
+
+        <section class="page" id="page2">
+            <h2>WHAT WE DO</h2>
+            <div class="service-grid">
+                <div class="service-item">
+                    <h3>Video Editing</h3>
+                    <p>Cinematic & Professional</p>
+                </div>
+                <div class="service-item">
+                    <h3>Website Building</h3>
+                    <p>Clean & Responsive</p>
+                </div>
+                <div class="service-item">
+                    <h3>Digital Creation</h3>
+                    <p>Unique Visual Assets</p>
+                </div>
+                <div class="service-item">
+                    <h3>Audio Editing</h3>
+                    <p>Crystal Clear Sound</p>
+                </div>
+            </div>
+            <button class="btn" onclick="goToPage(2)">Book My Order</button>
+        </section>
+
+        <section class="page" id="page3">
+            <h2>READY TO START?</h2>
+            <p class="price-tag">High Quality at Very Low & Affordable Prices</p>
+            
+            <a href="mailto:contacts@loomlayers.com" class="email-link">contacts@loomlayers.com</a>
+            
+            <p style="margin-bottom: 20px; color: #aaa;">Contact us directly via WhatsApp to discuss your project.</p>
+            
+            <a href="https://wa.me/919798247037?text=Hello%20LoomLayers!%20I%20want%20to%20place%20an%20order." 
+               target="_blank" class="btn whatsapp-btn">
+               Order via WhatsApp
+            </a>
+            
+            <button class="btn" onclick="goToPage(3)" style="margin-top: 50px; background: none; color: #555; border: 1px solid #333;">Finish Visit</button>
+        </section>
+
+        <section class="page" id="page4">
+            <h2 class="thanks-txt">THANK YOU</h2>
+            <p style="color: #888; margin-top: 20px;">FOR YOUR VISIT TO LOOMLAYERS</p>
+            <button class="btn" onclick="goToPage(0)" style="margin-top: 40px; font-size: 0.8rem;">Back to Start</button>
+        </section>
+
+    </div>
+
+    <script>
+        function goToPage(index) {
+            const wrapper = document.getElementById('mainWrapper');
+            wrapper.style.transform = `translateX(-${index * 100}vw)`;
+        }
+    </script>
+
+</body>
+</html>
